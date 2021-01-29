@@ -25,12 +25,8 @@ public class IMSEntryPoint {
         this.javaUtilities = new JavaUtilities();
         final CustomerDao custDAO = new CustomerDao();
         this.customers = new CustomerController(custDAO, javaUtilities);
-    }
-    
-    public void IMSEntryPoint1() {
-        this.javaUtilities = new JavaUtilities();
-        final ItemDao custDAO = new ItemDao();
-        this.items = new ItemController(custDAO, javaUtilities);
+        final ItemDao itemDAO = new ItemDao();
+        this.items = new ItemController(itemDAO, javaUtilities);
     }
 
     public void init() {
