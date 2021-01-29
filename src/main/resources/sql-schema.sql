@@ -1,22 +1,22 @@
-USE `ims`;
+drop schema ims;
 
 CREATE TABLE IF NOT EXISTS customers (
     `cust_id` INT(11) NOT NULL AUTO_INCREMENT,
     `first_name` VARCHAR(40) DEFAULT NULL,
     `surname` VARCHAR(40) DEFAULT NULL,
-    PRIMARY KEY (`cust_id`)
+    PRIMARY KEY (`id`)
 );
 
 CREATE TABLE IF NOT EXISTS items (
     `item_id` INT(11) NOT NULL AUTO_INCREMENT,
     `item_name` VARCHAR(40) DEFAULT NULL,
-    PRIMARY KEY (`item_id`)
+    PRIMARY KEY (`id`)
 );
 
 CREATE TABLE IF NOT EXISTS orders (
     `ord_id` INT(11) NOT NULL AUTO_INCREMENT,
     `fk_cust_id` INT NOT NULL,
-    PRIMARY KEY (`ord_id`),
+    PRIMARY KEY (`id`),
     FOREIGN KEY (`fk_cust_id`) REFERENCES customers(`cust_id`) ON UPDATE CASCADE ON DELETE CASCADE
 );
 

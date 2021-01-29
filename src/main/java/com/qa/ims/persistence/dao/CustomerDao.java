@@ -34,10 +34,10 @@ public class CustomerDao implements IDomainDao<Customer> {
         return null;
     }
 
-    public Customer read(Long id) {
+    public Customer read(Long cust_id) {
         try (Connection connection = DatabaseUtilities.getInstance().getConnection();
                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM customers WHERE id = ?");) {
-            statement.setLong(1, id);
+            statement.setLong(1, cust_id);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
             return modelFromResultSet(resultSet);
@@ -85,9 +85,9 @@ public class CustomerDao implements IDomainDao<Customer> {
                         .prepareStatement("UPDATE customers SET first_name = ?, surname = ? WHERE id = ?");) {
             statement.setString(1, customer.getFirstName());
             statement.setString(2, customer.getSurname());
-            statement.setLong(3, customer.getId());
+            statement.setLong(3, customer.getcust_Id());
             statement.executeUpdate();
-            return read(customer.getId());
+            return read(customer.getcust_Id());
         } catch (Exception e) {
             LOGGER.debug(e);
             LOGGER.error(e.getMessage());
@@ -96,10 +96,10 @@ public class CustomerDao implements IDomainDao<Customer> {
     }
 
     @Override
-    public int delete(long id) {
+    public int delete(long cust_id) {
         try (Connection connection = DatabaseUtilities.getInstance().getConnection();
                 Statement statement = connection.createStatement();) {
-            return statement.executeUpdate("delete from customers where id = " + id);
+            return statement.executeUpdate("delete from customers where id = " + cust_id);
         } catch (Exception e) {
             LOGGER.debug(e);
             LOGGER.error(e.getMessage());
@@ -109,7 +109,7 @@ public class CustomerDao implements IDomainDao<Customer> {
 
     @Override
     public Customer modelFromResultSet(ResultSet resultSet) throws SQLException {
-        Long id = resultSet.getLong("id");
+        Long id = resultSet.getLong("cust_id");
         String firstName = resultSet.getString("first_name");
         String surname = resultSet.getString("surname");
         return new Customer(id, firstName, surname);
