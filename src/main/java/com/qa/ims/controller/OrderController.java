@@ -36,14 +36,14 @@ public class OrderController implements ICrudController<Order>{
         LOGGER.info("Please enter an order value");
         Double orderValue = javaUtilities.getDouble();
         Order order = orderDao.create(new Order(orderValue));
-        LOGGER.info("Item created");
+        LOGGER.info("Order created");
         return order;
     }
 
     @Override
     public Order update() {
         LOGGER.info("Please enter the id of the order you would like to update");
-        LOGGER.info("Please enter an item name");
+        LOGGER.info("Please enter an order name");
         Double orderValue = javaUtilities.getDouble();
         Order order = orderDao.update(new Order(orderValue));
         LOGGER.info("Order Updated");
