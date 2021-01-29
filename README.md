@@ -55,6 +55,8 @@ Sonarqube is an extremely powerful tool for this, and uses code "smalls" to iden
 
 Add additional notes about how to deploy this on a live system
 
+Jira I used: https://ndean.atlassian.net/secure/RapidBoard.jspa?rapidView=2&useStoredSettings=true
+
 
 ## Built With
 
